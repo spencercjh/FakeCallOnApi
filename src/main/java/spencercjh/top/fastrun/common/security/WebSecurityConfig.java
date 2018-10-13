@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("配置Security");
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/run").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -28,5 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+        http
+                .csrf().disable();
     }
 }

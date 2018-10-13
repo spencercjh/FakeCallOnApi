@@ -55,7 +55,9 @@ public class RunController {
                               @ApiParam(name = "frequency", value = "步频", type = "String", defaultValue = "101")
                               @RequestParam @NonNull String frequency,
                               @ApiParam(name = "pace", value = "配速(1公里耗时,eg:8'20'')", type = "String", defaultValue = "8'20''")
-                              @RequestParam @NonNull String pace) {
+                              @RequestParam @NonNull String pace,
+                              @ApiParam(name = "duration", value = "耗时(s)", type = "Long", defaultValue = "7200")
+                              @RequestParam @NonNull Long duration) {
         if (!UsernameUtil.mobile(mobile)) {
             return new ResultUtil<>().setErrorMsg(501, "手机号格式有误");
         } else {
@@ -63,7 +65,7 @@ public class RunController {
             try {
                 login(paramData, mobile, password);
                 runPage(paramData);
-                saveRun(paramData, startTime, endTime, distance, isGirl, frequency, pace);
+                saveRun(paramData, startTime, endTime, distance, isGirl, frequency, pace, duration);
             } catch (Exception | Error e) {
                 e.printStackTrace();
                 return paramData.getResult();
@@ -152,9 +154,9 @@ public class RunController {
      * 上传跑步数据请求
      */
     private void saveRun(ParamData paramData, String startTime, String endTime, Double distance, boolean isGirl,
-                         String frequency, String pace) throws Error, Exception {
+                         String frequency, String pace, Long duration) throws Error, Exception {
         Map<String, Object> saveRunBody = getSaveRunBody(paramData, paramData.getMustPassNodeOne(), paramData.getPassNodes(),
-                startTime, endTime, distance, isGirl, frequency, pace);
+                startTime, endTime, distance, isGirl, frequency, pace, duration);
         String signAndData = JSON.toJSONString(saveRunBody);
         log.info("sign and data:" + signAndData);
         HttpRequest saveRunRequest = HttpRequest.post(paramData.getSaveRunUrl()).form(saveRunBody);
@@ -169,7 +171,7 @@ public class RunController {
 
     private Map<String, Object> getSaveRunBody(ParamData paramData, JSONObject mustPassNodeOne, JSONArray passNodes, String startTime,
                                                String endTime, Double distance, boolean isGirl, String frequency,
-                                               String pace) throws Error, Exception {
+                                               String pace, Long duration) throws Error, Exception {
         JSONArray newPassNodes = new JSONArray();
         for (int i = 0; i < passNodes.size(); ++i) {
             JSONObject singlePassNode = passNodes.getJSONObject(i);
@@ -184,13 +186,7 @@ public class RunController {
         bNode.add(mustPassNodeOne);
         Map<String, Object> data = new HashMap<>(16);
         data.put(BUPIN, frequency);
-        try {
-            data.put(DURATION, String.valueOf((DateFormat.getDateTimeInstance().parse(startTime).getTime()) -
-                    DateFormat.getDateTimeInstance().parse(endTime).getTime() / 1000));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            data.put(DURATION, DURATION_VALUE);
-        }
+        data.put(DURATION, String.valueOf(duration));
         data.put(END_TIME, endTime);
         data.put(FROMBP, FROMBP_VALUE);
         data.put(GOAL, (isGirl ? GOAL_VALUE_FEMALE : GOAL_VALUE_MALE));
