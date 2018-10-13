@@ -78,7 +78,7 @@ public class RunController {
     /**
      * 登陆请求
      */
-    private void login(ParamData paramData, String mobile, String password) throws Error,Exception {
+    private void login(ParamData paramData, String mobile, String password) throws Error, Exception {
         Map<String, String> loginBody = getLoginBody(mobile, password);
         paramData.setLoginUrl(paramData.getLoginUrl().replace("SIGN", loginBody.get(SIGN)).
                 replace("DATA", loginBody.get(DATA)));
@@ -86,22 +86,21 @@ public class RunController {
         HttpRequest loginRequest = HttpRequest.get(paramData.getLoginUrl());
         paramData.setRequestHeader(loginRequest, paramData, false, false, false);
         HttpResponse loginResponse = loginRequest.execute();
-        List<HttpCookie> cookie = loginResponse.getCookie();
+//        List<HttpCookie> cookie = loginResponse.getCookie();
         String loginJsonResult = loginResponse.body();
         log.info("login result:" + loginJsonResult);
         JSONObject loginResponseResult = JSON.parseObject(loginJsonResult);
         paramData.setResult(new ResultUtil<>().setData(loginResponseResult));
-        if(!loginResponseResult.getInteger(CODE).equals(CommonConstant.SUCCESS)){
+        if (!loginResponseResult.getInteger(CODE).equals(CommonConstant.SUCCESS)) {
             throw new RuntimeException("无法正常跑步");
         }
         JSONObject loginResponseData = loginResponseResult.getJSONObject(DATA);
         paramData.setUtoken(loginResponseData.getString(UTOKEN));
         paramData.setUserId(loginResponseData.getString(USERID));
-        paramData.setCookie(String.valueOf(cookie.get(0)));
-
+//        paramData.setCookie(String.valueOf(cookie.get(0)));
     }
 
-    private Map<String, String> getLoginBody(String mobile, String password) throws Error,Exception {
+    private Map<String, String> getLoginBody(String mobile, String password) throws Error, Exception {
         Map<String, String> data = new HashMap<>(4);
         data.put(INFO, INFO_VALUE);
         data.put(MOBILE, mobile);
@@ -118,7 +117,7 @@ public class RunController {
     /**
      * 跑步界面请求
      */
-    private void runPage(ParamData paramData) throws Error,Exception {
+    private void runPage(ParamData paramData) throws Error, Exception {
         Map<String, String> runPageBody = getRunPageBody(paramData.getUserId());
         paramData.setRunPageUrl(paramData.getRunPageUrl().replace("SIGN", runPageBody.get(SIGN)).
                 replace("DATA", runPageBody.get(DATA)));
@@ -126,10 +125,10 @@ public class RunController {
         HttpRequest runPageRequest = HttpRequest.get(paramData.getRunPageUrl());
         paramData.setRequestHeader(runPageRequest, paramData, true, true, false);
         String runPageJsonResult = runPageRequest.execute().body();
-        log.info("run META-INF result:" + runPageJsonResult);
+        log.info("run page result:" + runPageJsonResult);
         JSONObject runPageResponseResult = JSON.parseObject(runPageJsonResult);
         paramData.setResult(new ResultUtil<>().setData(runPageResponseResult));
-        if(!runPageResponseResult.getInteger(CODE).equals(CommonConstant.SUCCESS)){
+        if (!runPageResponseResult.getInteger(CODE).equals(CommonConstant.SUCCESS)) {
             throw new RuntimeException("无法正常跑步");
         }
         JSONObject runPageResponseData = runPageResponseResult.getJSONObject(DATA);
@@ -140,7 +139,7 @@ public class RunController {
 
     }
 
-    private Map<String, String> getRunPageBody(String userId) throws Error,Exception {
+    private Map<String, String> getRunPageBody(String userId) throws Error, Exception {
         Map<String, String> data = new HashMap<>(4);
         data.put(INITLOCATION, INITLOCATION_VALUE);
         data.put(TYPE_RUN, TYPE_RUN_VALUE);
@@ -157,7 +156,7 @@ public class RunController {
      * 上传跑步数据请求
      */
     private void saveRun(ParamData paramData, String startTime, String endTime, Double distance, boolean isGirl,
-                         String frequency, String pace) throws Error,Exception {
+                         String frequency, String pace) throws Error, Exception {
         Map<String, Object> saveRunBody = getSaveRunBody(paramData, paramData.getMustPassNodeOne(), startTime, endTime,
                 distance, isGirl, frequency, pace);
         String signAndData = JSON.toJSONString(saveRunBody);
@@ -174,7 +173,7 @@ public class RunController {
 
     private Map<String, Object> getSaveRunBody(ParamData paramData, JSONObject mustPassNodeOne, String startTime,
                                                String endTime, Double distance, boolean isGirl, String frequency,
-                                               String pace) throws Error,Exception {
+                                               String pace) throws Error, Exception {
         JSONObject position = mustPassNodeOne.getJSONObject(POSITION);
         position.put(SPEED, 0.0);
         mustPassNodeOne.put(POSITION, position);
@@ -187,6 +186,7 @@ public class RunController {
                     DateFormat.getDateTimeInstance().parse(endTime).getTime() / 1000));
         } catch (ParseException e) {
             e.printStackTrace();
+            data.put(DURATION, DURATION_VALUE);
         }
         data.put(END_TIME, endTime);
         data.put(FROMBP, FROMBP_VALUE);
@@ -201,10 +201,10 @@ public class RunController {
         String dataJsonString = JSON.toJSONString(data);
         JSONObject dataJsonObject = JSON.parseObject(dataJsonString);
         JSONObject myRun = JSON.parseObject(PREVIOUS_RUN);
-        dataJsonObject.put("tNode", myRun.get(TNODE));
-        dataJsonObject.put("track", myRun.get(TRACK));
-        dataJsonObject.put("trend", myRun.get(TREND));
-        dataJsonObject.put("bNode", bNode);
+        dataJsonObject.put(TNODE, myRun.get(TNODE));
+        dataJsonObject.put(TRACK, myRun.get(TRACK));
+        dataJsonObject.put(TREND, myRun.get(TREND));
+        dataJsonObject.put(BNODE, bNode);
         String finalDataJson = JSON.toJSONString(dataJsonObject);
         Map<String, Object> body = new HashMap<>(2);
         body.put(SIGN, Json2Package.getSign(finalDataJson));

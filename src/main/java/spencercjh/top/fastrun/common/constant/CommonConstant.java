@@ -69,6 +69,7 @@ public interface CommonConstant {
     String BNODE = "bNode";
     String BUPIN = "buPin";
     String DURATION = "duration";
+    String DURATION_VALUE="7200";
     String END_TIME = "endTime";
     String FROMBP = "frombp";
     String FROMBP_VALUE = "1";
