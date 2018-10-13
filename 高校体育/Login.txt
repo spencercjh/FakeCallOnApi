@@ -1,0 +1,52 @@
+GET http://gxhttp.chinacloudapp.cn/api/reg/login?sign=52e179223e97a3296454e841688a2dce&data=%7B%22info%22%3A%22B4D724F9EB50E6ED3DF5B571CCD7D4A8%22%2C%22mobile%22%3A%2215000131965%22%2C%22password%22%3A%22cjh1998CJH%22%2C%22type%22%3A%22AndroidSDKbuiltforx86%22%7D HTTP/1.1
+Accept-Language: en-US,en;q=0.8
+User-Agent: okhttp-okgo/jeasonlzy
+versionCode: 308
+versionName: 2.2.5
+platform: android
+xxversionxx: 20180601
+uuid: B4D724F9EB50E6ED3DF5B571CCD7D4A8
+utoken: 
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,1
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=577e4jgq3jjlo3urafc3kl5mm0
+
+sign	52e179223e97a3296454e841688a2dce
+data	{"info":"B4D724F9EB50E6ED3DF5B571CCD7D4A8","mobile":"15000131965","password":"cjh1998CJH","type":"AndroidSDKbuiltforx86"}
+
+
+HTTP/1.1 200 OK
+Date: Fri, 12 Oct 2018 10:27:53 GMT
+Server: Apache/2.2.15 (CentOS)
+X-Powered-By: PHP/5.6.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Seq: 5bc0772985301
+Connection: close
+Content-Encoding: none
+Content-Length: 356
+Content-Type: text/html; charset=UTF-8
+
+{"code":"200","msg":"登录成功","data":{"userid":"129835","school":"上海海洋大学","schoolId":"82","signature":"","username":"蔡佳昊","photo":"http:\/\/gxhttp.chinacloudapp.cn\/.\/uploads\/5bbf7be83da82.jpg","goal":"80.00","surplus":"66.50","last_time":"2018-10-12 17:55:17","teacher":"","course":"","utoken":"a1ac02f79045ca4a8f7decd70c15d608"}}
+
+{
+	"code": "200",
+	"msg": "登录成功",
+	"data": {
+		"userid": "129835",
+		"school": "上海海洋大学",
+		"schoolId": "82",
+		"signature": "",
+		"username": "蔡佳昊",
+		"photo": "http:\/\/gxhttp.chinacloudapp.cn\/.\/uploads\/5bbf7be83da82.jpg",
+		"goal": "80.00",
+		"surplus": "66.50",
+		"last_time": "2018-10-12 17:55:17",
+		"teacher": "",
+		"course": "",
+		"utoken": "a1ac02f79045ca4a8f7decd70c15d608"
+	}
+}

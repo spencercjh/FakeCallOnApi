@@ -1,0 +1,91 @@
+GET http://gxhttp.chinacloudapp.cn/api/run/runPage?sign=3c199389438ec886406e291e5f36037c&data=%7B%22initLocation%22%3A%22121.92209571503255%2C30.869519006815654%22%2C%22type%22%3A%221%22%2C%22userid%22%3A%22155796%22%7D HTTP/1.1
+Accept-Language: en-US,en;q=0.8
+User-Agent: okhttp-okgo/jeasonlzy
+versionCode: 308
+versionName: 2.2.5
+platform: android
+xxversionxx: 20180601
+uuid: B4D724F9EB50E6ED3DF5B571CCD7D4A8
+utoken: 4f91e29802ba4fa2ede29d0f90619282
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,1
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=577e4jgq3jjlo3urafc3kl5mm0
+
+{"initLocation":"121.92209571503255,30.869519006815654","type":"1","userid":"155796"}
+
+{
+	"initLocation": "121.8969640000,30.8829570000",
+	"type": "1",
+	"userid": "155796"
+}
+
+HTTP/1.1 200 OK
+Date: Fri, 12 Oct 2018 07:57:15 GMT
+Server: Apache/2.2.15 (CentOS)
+X-Powered-By: PHP/5.6.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Seq: 5bc053dbdf93c
+Content-Length: 866
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+{"code":"200","msg":"获取成功","data":{"beaconcount":1,"beaconsinfo":[],"gpscount":2,"distance":20,"peisu":600,"gpsinfo":[{"latitude":"30.8829940000","longitude":"121.9014370000"},{"latitude":"30.8795210000","longitude":"121.8929660000"},{"latitude":"30.8818340000","longitude":"121.8991570000"},{"latitude":"30.8859890000","longitude":"121.8948540000"}],"length":"1.50","dayTarget":"1.50","ibeacon":[{"name":"shhy100012","type":1,"number":"shhy100012","position":{"latitude":"30.8814780000","longitude":"121.8936210000"},"id":"742","uuid":"FDA50693-A4E2-4FB1-AFCF-C6EB07647825","major":"shhy1","minor":"00012"},{"name":"shhy100016","type":1,"number":"shhy100016","position":{"latitude":"30.8858690000","longitude":"121.9000200000"},"id":"746","uuid":"FDA50693-A4E2-4FB1-AFCF-C6EB07647825","major":"shhy1","minor":"00016"}],"runPageId":6975828,"maxSeconds":"0"}}
+
+{
+	"code": "200",
+	"msg": "获取成功",
+	"data": {
+		"beaconcount": 1,
+		"beaconsinfo": [],
+		"gpscount": 2,
+		"distance": 20,
+		"peisu": 600,
+		"gpsinfo": [{
+			"latitude": "30.8829940000",
+			"longitude": "121.9014370000"
+		}, {
+			"latitude": "30.8795210000",
+			"longitude": "121.8929660000"
+		}, {
+			"latitude": "30.8818340000",
+			"longitude": "121.8991570000"
+		}, {
+			"latitude": "30.8859890000",
+			"longitude": "121.8948540000"
+		}],
+		"length": "1.50",
+		"dayTarget": "1.50",
+		"ibeacon": [{
+			"name": "shhy100012",
+			"type": 1,
+			"number": "shhy100012",
+			"position": {
+				"latitude": "30.8814780000",
+				"longitude": "121.8936210000"
+			},
+			"id": "742",
+			"uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+			"major": "shhy1",
+			"minor": "00012"
+		}, {
+			"name": "shhy100016",
+			"type": 1,
+			"number": "shhy100016",
+			"position": {
+				"latitude": "30.8858690000",
+				"longitude": "121.9000200000"
+			},
+			"id": "746",
+			"uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+			"major": "shhy1",
+			"minor": "00016"
+		}],
+		"runPageId": 6975828,
+		"maxSeconds": "0"
+	}
+}

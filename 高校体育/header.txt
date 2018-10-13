@@ -1,0 +1,63 @@
+POST /api/run/saveRunV2 HTTP/1.1
+Accept-Language: zh-CN,zh;q=0.8
+User-Agent: Mozilla/5.0 (Linux; U; Android 7.1.1; zh-cn; OS105 Build/NGI77B) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+versionCode: 288
+versionName: 2.1.8
+platform: android
+xxversionxx: 20180601
+uuid: E7DF16E5A7B3A6E614C71A614BC5334F
+utoken: ae3bce88144ddca687dfc816a32b97bc
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33424
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=sev3dq78f6pketvq5lg5kefuu3
+
+GET /api/run/runPage?sign=c74322757d57c105e78d99ad97d61a48&data=%7B%22initLocation%22%3A%22121.898648%2C30.880662%22%2C%22type%22%3A%221%22%2C%22userid%22%3A%22129835%22%7D HTTP/1.1
+Accept-Language: zh-CN,zh;q=0.8
+User-Agent: Mozilla/5.0 (Linux; U; Android 7.1.1; zh-cn; OS105 Build/NGI77B) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+versionCode: 298
+versionName: 2.2.1
+platform: android
+xxversionxx: 20180601
+uuid: E7DF16E5A7B3A6E614C71A614BC5334F
+utoken: 62a8b791bd33115fe668cb7d2e856bc5
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,0
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=5182bjgb915n7jvala579l4n20
+
+
+GET /api/run/runPage?sign=a4f05ce20d88e020d3a0ac7999082783&data=%7B%22initLocation%22%3A%22121.898656%2C30.880648%22%2C%22type%22%3A%221%22%2C%22userid%22%3A%22130177%22%7D HTTP/1.1
+Accept-Language: zh-CN,zh;q=0.8
+User-Agent: Mozilla/5.0 (Linux; U; Android 7.1.1; zh-cn; OS105 Build/NGI77B) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+versionCode: 308
+versionName: 2.2.5
+platform: android
+xxversionxx: 20180601
+uuid: E7DF16E5A7B3A6E614C71A614BC5334F
+utoken: 6d83f064aa9575e7ed289df6f8e0eb61
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,0
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=2u3senr10udjdpkhp4ckhet364
+
+
+GET /api/run/runPage?sign=a587769b7274738816538ba5504f0e8d&data=%7B%22initLocation%22%3A%22121.898649%2C30.880657%22%2C%22type%22%3A%221%22%2C%22userid%22%3A%22130177%22%7D HTTP/1.1
+Accept-Language: zh-CN,zh;q=0.8
+User-Agent: Mozilla/5.0 (Linux; U; Android 7.1.1; zh-cn; OS105 Build/NGI77B) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+versionCode: 308
+versionName: 2.2.5
+platform: android
+xxversionxx: 20180601
+uuid: E7DF16E5A7B3A6E614C71A614BC5334F
+utoken: 6d83f064aa9575e7ed289df6f8e0eb61
+BDA9F42E0C8A294ECDF5CC72AAE6A701: 0,0,0,0,0
+Host: gxhttp.chinacloudapp.cn
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Cookie: PHPSESSID=2u3senr10udjdpkhp4ckhet364
