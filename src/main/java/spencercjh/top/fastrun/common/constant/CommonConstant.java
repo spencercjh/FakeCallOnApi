@@ -3,6 +3,7 @@ package spencercjh.top.fastrun.common.constant;
 /**
  * @author spencercjh
  */
+@SuppressWarnings("SpellCheckingInspection")
 public interface CommonConstant {
 
     /**
@@ -63,13 +64,12 @@ public interface CommonConstant {
     String TYPE_RUN_VALUE = "1";
     String RUNPAGEID = "runPageId";
     String IBEACON = "ibeacon";
-    String RUNID = "runid";
-
+    String GPSINFO = "gpsinfo";
     String POSITION = "position";
     String BNODE = "bNode";
     String BUPIN = "buPin";
     String DURATION = "duration";
-    String DURATION_VALUE="7200";
+    String DURATION_VALUE = "7200";
     String END_TIME = "endTime";
     String FROMBP = "frombp";
     String FROMBP_VALUE = "1";

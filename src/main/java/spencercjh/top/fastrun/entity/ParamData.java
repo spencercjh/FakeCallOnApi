@@ -1,6 +1,7 @@
 package spencercjh.top.fastrun.entity;
 
 import cn.hutool.http.HttpRequest;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import spencercjh.top.fastrun.common.vo.Result;
@@ -10,6 +11,7 @@ import static spencercjh.top.fastrun.common.constant.CommonConstant.*;
 /**
  * @author spencercjh
  */
+@SuppressWarnings("SpellCheckingInspection")
 @Data
 public class ParamData {
     private String utoken = "";
@@ -18,6 +20,7 @@ public class ParamData {
     private String runPageId = "";
     private String runId = "";
     private JSONObject mustPassNodeOne = new JSONObject();
+    private JSONArray passNodes = new JSONArray();
     private Result<Object> result;
     /**
      * 请求URL

@@ -8,8 +8,6 @@ import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-import java.net.HttpCookie;
-
 import io.swagger.annotations.ApiParam;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
@@ -26,7 +24,6 @@ import spencercjh.top.fastrun.entity.ParamData;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static spencercjh.top.fastrun.common.constant.CommonConstant.*;
@@ -86,7 +83,6 @@ public class RunController {
         HttpRequest loginRequest = HttpRequest.get(paramData.getLoginUrl());
         paramData.setRequestHeader(loginRequest, paramData, false, false, false);
         HttpResponse loginResponse = loginRequest.execute();
-//        List<HttpCookie> cookie = loginResponse.getCookie();
         String loginJsonResult = loginResponse.body();
         log.info("login result:" + loginJsonResult);
         JSONObject loginResponseResult = JSON.parseObject(loginJsonResult);
@@ -97,7 +93,6 @@ public class RunController {
         JSONObject loginResponseData = loginResponseResult.getJSONObject(DATA);
         paramData.setUtoken(loginResponseData.getString(UTOKEN));
         paramData.setUserId(loginResponseData.getString(USERID));
-//        paramData.setCookie(String.valueOf(cookie.get(0)));
     }
 
     private Map<String, String> getLoginBody(String mobile, String password) throws Error, Exception {
@@ -136,7 +131,8 @@ public class RunController {
         JSONArray mustPassNodeJsonArray = runPageResponseData.getJSONArray(IBEACON);
         JSONObject mustPassNodeOne = mustPassNodeJsonArray.getJSONObject(0);
         paramData.setMustPassNodeOne(mustPassNodeOne);
-
+        JSONArray passNodesJsonArray = runPageResponseData.getJSONArray(GPSINFO);
+        paramData.setPassNodes(passNodesJsonArray);
     }
 
     private Map<String, String> getRunPageBody(String userId) throws Error, Exception {
@@ -157,8 +153,8 @@ public class RunController {
      */
     private void saveRun(ParamData paramData, String startTime, String endTime, Double distance, boolean isGirl,
                          String frequency, String pace) throws Error, Exception {
-        Map<String, Object> saveRunBody = getSaveRunBody(paramData, paramData.getMustPassNodeOne(), startTime, endTime,
-                distance, isGirl, frequency, pace);
+        Map<String, Object> saveRunBody = getSaveRunBody(paramData, paramData.getMustPassNodeOne(), paramData.getPassNodes(),
+                startTime, endTime, distance, isGirl, frequency, pace);
         String signAndData = JSON.toJSONString(saveRunBody);
         log.info("sign and data:" + signAndData);
         HttpRequest saveRunRequest = HttpRequest.post(paramData.getSaveRunUrl()).form(saveRunBody);
@@ -171,9 +167,16 @@ public class RunController {
         paramData.setResult(new ResultUtil<>().setData(saveRunResponseResult));
     }
 
-    private Map<String, Object> getSaveRunBody(ParamData paramData, JSONObject mustPassNodeOne, String startTime,
+    private Map<String, Object> getSaveRunBody(ParamData paramData, JSONObject mustPassNodeOne, JSONArray passNodes, String startTime,
                                                String endTime, Double distance, boolean isGirl, String frequency,
                                                String pace) throws Error, Exception {
+        JSONArray newPassNodes = new JSONArray();
+        for (int i = 0; i < passNodes.size(); ++i) {
+            JSONObject singlePassNode = passNodes.getJSONObject(i);
+            singlePassNode.put(SPEED, 0.0);
+            newPassNodes.add(singlePassNode);
+        }
+        paramData.setPassNodes(newPassNodes);
         JSONObject position = mustPassNodeOne.getJSONObject(POSITION);
         position.put(SPEED, 0.0);
         mustPassNodeOne.put(POSITION, position);
@@ -201,7 +204,7 @@ public class RunController {
         String dataJsonString = JSON.toJSONString(data);
         JSONObject dataJsonObject = JSON.parseObject(dataJsonString);
         JSONObject myRun = JSON.parseObject(PREVIOUS_RUN);
-        dataJsonObject.put(TNODE, myRun.get(TNODE));
+        dataJsonObject.put(TNODE, passNodes);
         dataJsonObject.put(TRACK, myRun.get(TRACK));
         dataJsonObject.put(TREND, myRun.get(TREND));
         dataJsonObject.put(BNODE, bNode);
