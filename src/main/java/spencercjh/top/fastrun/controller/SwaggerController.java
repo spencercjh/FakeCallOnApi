@@ -12,6 +12,6 @@ public class SwaggerController {
 
     @RequestMapping("/")
     public ModelAndView home() {
-        return new ModelAndView("test.html");
+        return new ModelAndView("home.html");
     }
 }
