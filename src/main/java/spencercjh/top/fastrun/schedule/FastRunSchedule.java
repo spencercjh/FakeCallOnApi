@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import spencercjh.top.fastrun.service.FastRunService;
+import spencercjh.top.fastrun.serviceimpl.FastRunServiceImpl;
 import spencercjh.top.fastrun.entity.ParamData;
 
 import java.text.SimpleDateFormat;
@@ -19,11 +19,11 @@ import static spencercjh.top.fastrun.common.constant.CommonConstant.*;
 @Log4j2
 public class FastRunSchedule {
 
-    private final FastRunService fastRunService;
+    private final FastRunServiceImpl fastRunServiceImpl;
 
     @Autowired
-    public FastRunSchedule(FastRunService fastRunService) {
-        this.fastRunService = fastRunService;
+    public FastRunSchedule(FastRunServiceImpl fastRunServiceImpl) {
+        this.fastRunServiceImpl = fastRunServiceImpl;
     }
 
     /***
@@ -33,8 +33,8 @@ public class FastRunSchedule {
     public void fastRunEveryDay() {
         ParamData paramData = new ParamData();
         try {
-            fastRunService.login(paramData, MOBILE_VALUE, PASSWORD_VALUE);
-            fastRunService.runPage(paramData);
+            fastRunServiceImpl.login(paramData, MOBILE_VALUE, PASSWORD_VALUE);
+            fastRunServiceImpl.runPage(paramData);
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, HOUR_VALUE);
             calendar.set(Calendar.MINUTE, MINUTE_VALUE_1);
@@ -43,7 +43,7 @@ public class FastRunSchedule {
             String startTime = dateFormat.format(calendar.getTime());
             calendar.set(Calendar.MINUTE, MINUTE_VALUE_2);
             String endTime = dateFormat.format(calendar.getTime());
-            fastRunService.saveRun(paramData, startTime, endTime, DISTANCE, ISGIRL, FREQUENCY, PACE, DURATION_VALUE);
+            fastRunServiceImpl.saveRun(paramData, startTime, endTime, DISTANCE, ISGIRL, FREQUENCY, PACE, DURATION_VALUE);
         } catch (Exception | Error e) {
             e.printStackTrace();
             log.error(paramData.getResult());

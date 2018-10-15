@@ -1,4 +1,4 @@
-package spencercjh.top.fastrun.service;
+package spencercjh.top.fastrun.serviceimpl;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -22,7 +22,7 @@ import static spencercjh.top.fastrun.common.constant.CommonConstant.*;
  */
 @Service
 @Log4j2
-public class FastRunService {
+public class FastRunServiceImpl {
     /**
      * 登陆请求
      */

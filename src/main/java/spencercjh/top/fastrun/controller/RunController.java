@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import spencercjh.top.fastrun.service.FastRunService;
+import spencercjh.top.fastrun.serviceimpl.FastRunServiceImpl;
 import spencercjh.top.fastrun.common.util.ResultUtil;
 import spencercjh.top.fastrun.common.util.UsernameUtil;
 import spencercjh.top.fastrun.common.vo.Result;
@@ -27,11 +27,11 @@ import spencercjh.top.fastrun.entity.ParamData;
 @Api(description = "一键跑步接口")
 public class RunController {
 
-    private final FastRunService fastRunService;
+    private final FastRunServiceImpl fastRunServiceImpl;
 
     @Autowired
-    public RunController(FastRunService fastRunService) {
-        this.fastRunService = fastRunService;
+    public RunController(FastRunServiceImpl fastRunServiceImpl) {
+        this.fastRunServiceImpl = fastRunServiceImpl;
     }
 
     @PostMapping("/run")
@@ -59,9 +59,9 @@ public class RunController {
         } else {
             ParamData paramData = new ParamData();
             try {
-                fastRunService.login(paramData, mobile, password);
-                fastRunService.runPage(paramData);
-                fastRunService.saveRun(paramData, startTime, endTime, distance, isGirl, frequency, pace, duration);
+                fastRunServiceImpl.login(paramData, mobile, password);
+                fastRunServiceImpl.runPage(paramData);
+                fastRunServiceImpl.saveRun(paramData, startTime, endTime, distance, isGirl, frequency, pace, duration);
             } catch (Exception | Error e) {
                 e.printStackTrace();
                 return paramData.getResult();
