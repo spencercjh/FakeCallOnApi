@@ -5,7 +5,17 @@ package spencercjh.top.fastrun.common.constant;
  */
 @SuppressWarnings("SpellCheckingInspection")
 public interface CommonConstant {
-
+    String MOBILE_VALUE = "15921916039";
+    String PASSWORD_VALUE = "123456";
+    Double DISTANCE = 2500D;
+    Boolean ISGIRL = false;
+    String FREQUENCY = "101";
+    String PACE = "9'10''";
+    Long DURATION_VALUE = 1208L;
+    Integer HOUR_VALUE = 7;
+    Integer MINUTE_VALUE_1 = 0;
+    Integer MINUTE_VALUE_2 = 20;
+    Integer SECOND_VALUE = 28;
     /**
      * 成功
      */
@@ -69,7 +79,6 @@ public interface CommonConstant {
     String BNODE = "bNode";
     String BUPIN = "buPin";
     String DURATION = "duration";
-    String DURATION_VALUE = "7200";
     String END_TIME = "endTime";
     String FROMBP = "frombp";
     String FROMBP_VALUE = "1";
