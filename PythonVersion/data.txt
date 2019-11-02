@@ -1,0 +1,10 @@
+167.4
+841
+2019-10-24 19:20:07
+2019-10-24 19:55:23
+2135.1565
+1855
+{'Accept-Language': 'zh-CN,zh;q=0.8','User-Agent': 'okhttp-okgo/jeasonlzy','versionCode': '385','versionName': '2.4.3','platform': 'android','xxversionxx': '20180601','uuid': 'CE2A01C5813AB67F8E5476386151CF9B','utoken': '054698cf0d780d5ddc9087b965c03975','BDA9F42E0C8A294ECDF5CC72AAE6A701': '0,0,0,0,0,0','Host': 'www.sportcampus.cn','Connection': 'Keep-Alive','Accept-Encoding': 'gzip','Cookie': 'PHPSESSID=***'}
+{"info":"CE2A01C5813AB67F8E5476386151CF9B","mobile":"***","password":"***","type":"***"}
+{"initLocation":"***","type":"1","userid":"***"}
+{"bNode": ... ... userid":"***"}
